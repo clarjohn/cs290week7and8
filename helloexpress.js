@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-app.set('port', 7000);
+app.set('port', 7022);
 
 app.get('/', function(reg,res){
     res.type('text/plain');
