@@ -2,32 +2,31 @@ var express = require('express');
 
 var app = express();
 
-app.set('port', 7022);
+app.set('port', 7033);
 
-app.get('/', function(reg,res){
-    res.type('text/plain');
-    res.send('welcome to the main page!!!');
+app.get('/',function(req,res){
+  res.type('text/plain');
+  res.send('Welcome to the main page!');
 });
 
-app.get('/other-page', function(reg,res){
-    res.type('text/plain');
-    res.send('Yes this is working');
+app.get('/other-page',function(req,res){
+  res.type('text/plain');
+  res.send('Welcome to the other page!');
 });
 
-app.use(function(reg,res){
-    res.type('text/plain');
-    res.status(404);
-    res.send('404-Its all gone to hell.')
-
+app.use(function(req,res){
+  res.type('text/plain');
+  res.status(404);
+  res.send('404 - Not Found');
 });
 
-app.use(function(err,reg,res, next){
-        res.type('plain/text');
-        res.status(500);
-        res.send('500 - this is the server error');
-
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.type('plain/text');
+  res.status(500);
+  res.send('500 - Server Error');
 });
 
 app.listen(app.get('port'), function(){
-    console.log('Express started on http://localhost:' + app.get('port')+', press Ctrl-c to terminate.')
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
