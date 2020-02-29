@@ -2,17 +2,17 @@ var express = require('express');
 
 var app = express();
 
-app.set('port', 3000);
+app.set('port', 7000);
 
-app.get('/', function(reg,res)){
+app.get('/', function(reg,res){
     res.type('text/plain');
     res.send('welcome to the main page!!!');
-}
+});
 
 app.get('/other-page', function(reg,res){
     res.type('text/plain');
     res.send('Yes this is working');
-})
+});
 
 app.use(function(reg,res){
     res.type('text/plain');
@@ -30,4 +30,4 @@ app.use(function(err,reg,res, next){
 
 app.listen(app.get('port'), function(){
     console.log('Express started on http://localhost:' + app.get('port')+', press Ctrl-c to terminate.')
-})
+});
